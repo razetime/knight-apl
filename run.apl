@@ -12,7 +12,7 @@
      'R'=⊃⊃⍵:'((',⍵,')0)'
      '='=⊃⊃⍵:(')',⍨'(kns.',(2⊃⍵),'⊢←',∇3⊃⍵)⊣kns.⍎∊(2⊃⍵),'←0'
      'I'=⊃⊃⍵:')',⍨'(({',(∇3⊃⍵),'}If{',(∇4⊃⍵)'})',∇2⊃⍵     ⍝ If and while are dops, so we need to shuffle around the inputs a bit
-     'W'=⊃⊃⍵:'})0)',⍨'(({~',(∇2⊃⍵),'}While{',∇¨2↓⍵
+     'W'=⊃⊃⍵:'})0)',⍨'(({',(∇2⊃⍵),'}While{',∇¨2↓⍵
      'B'=⊃⊃⍵:''')',⍨'(Block''',∇¨1↓⍵ ⍝ Blocks are effectively strings, which means eval can work on them
                                      ⍝ no first class functions, so this is the simplest way
      ';'=⊃⊃⍵:')',⍨'(',{⍺,'⊣',⍵}/⌽∇¨1↓⍵
@@ -26,7 +26,8 @@
    ⍝ Helpers
    CastBool←{(0=⍵)∨(''=⍵):0⋄1}
    CastInt←{83=⎕DR ⍵:⍵⋄⍎⊃('\d+'⎕S'&')⍵}
-   FALSE←0
+   T←1
+   F←0
    NULL←0
 
    ⍝ Builtin functions
@@ -38,7 +39,7 @@
    Dump←{CastBool ⍵:⎕←'truthy'⋄⎕←'falsy'}
    Eval←{Run Parse ⍵}
    Not←{CastBool ⍵:0⋄1}
-   While←{⍵⍵⍣⍺⍺⊢⍵}
+   While←{⍺⍺0:∇⍵⍵0⋄0}
    Plus←{83=⎕DR⊃⍵:(⊃⍵)+CastInt 2⊃⍵⋄(⊃⍵),⍕2⊃⍵} ⍝ need to special case for strings, same for mul
    Minus←{(⊃⍵)+CastInt 2⊃⍵}
    Div←{⌊(⊃⍵)÷CastInt 2⊃⍵}
