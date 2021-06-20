@@ -7,8 +7,8 @@
 
    ⍝ Regex literals - partly taken from readme
    UP ← '[A-Z_]*'
-   nullary ← '[0-9]+|''[^'']*''|"[^"]"|[a-z_][a-z_0-9]*|[TFNPR]',UP
-   unary ← '[BCOQLDE]',UP,'|[`!]'
+   nullary ← '[0-9]+|''[^'']*''|"[^"]*"|[a-z_][a-z_0-9]*|[TFNPR]',UP
+   unary ← '[ABCOQLDE]',UP,'|[`!]'
    binary ← 'W',UP,'|[\+\-\*\/%\^<>\?&\|;=]'
    ternary ← '[IG]',UP
    quaternary ← 'S',UP
@@ -17,7 +17,7 @@
    ⍝ ⎕←tokenRegex
    tokens←(tokenRegex ⎕S '&')input
    ast←⍬
-   symbols ← 'BCOQLDE`!' 'W+-/*%^<>?&|;=' 'IG' (,'S')
+   symbols ← 'ABCOQLDE`!' 'W+-/*%^<>?&|;=' 'IG' (,'S')
    gen←{
      arity ← ⊃⍸(⊃⍵)∘∊¨symbols
      arity=0: ast⊢←(⊂⍵),ast
