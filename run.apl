@@ -33,7 +33,7 @@
    ⍝ Builtin functions
    Block←{⍵}
    Call←{⍎⍵}
-   Output←{0⊣⎕←⍵}
+   Output←{('\'=⊃⌽⍵)∧'\\'≢¯2↑⍵:0⊣⍞←¯1↓⍵⋄0⊣⎕←⍵}
    Quit←{⎕←⍵⋄→QuitLabel}
    Length←{≢⍵}
    Dump←{CastBool ⍵:⎕←'truthy'⋄⎕←'falsy'}
