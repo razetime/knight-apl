@@ -6,7 +6,6 @@
  opt←⎕
 
  :If opt=1
-   ⍝C:\Users\raghu\Documents\Code\APLPSC21\Phase-1\Q1.apl
    ⎕←'Enter Filename:'
    tieN←⍞ ⎕NTIE 0
    code←∊⎕NREAD tieN 82 (⎕NSIZE tieN)

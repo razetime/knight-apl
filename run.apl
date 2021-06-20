@@ -3,10 +3,6 @@
    ⍝ symbols ← 'BCOQLDE`!' 'W+-/*%^<>?&|;=' 'IG' (,'S')
    keys ← 'ABCOQLDE`!W+-/*%^<>?&|;=IGSP:'
    trans ← '⎕UCS∘⊃' 'Block' 'Call' 'Output' 'Quit' 'Length' 'Dump' 'Eval' '⎕SH' 'Not' 'While' 'Plus' 'Minus' 'Div' 'Mul' 'Mod' 'Pow' 'Less' 'Great' 'Rand' 'And' 'Or' 'K' 'Equ' 'If' 'Get' 'Sub' '⎕' '⊢'
-   ⍝ ⎕←keys,⍪trans
-   ⍝ ⎕←⊃,/';'∘,¨trans
-   ⍝ output←''
-  ⍝ ⎕←ast 
    'kns' ⎕NS ⍬ ⍝ Knight namespace to freely create variables in
    convert←{
      'R'=⊃⊃⍵:'(Rand 0)'
